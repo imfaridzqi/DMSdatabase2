@@ -1,0 +1,157 @@
+<% layout('layouts/boilerplate') %>
+
+<section>
+  <div class="container">
+    <div class="w-full px-4 pt-36">
+      <div class="max-w-xl mx-auto text-center mb-16">
+        <h2
+          class="font-bold text-slate-800 text-3xl mb-2 sm:text-2xl lg:text-3xl"
+        >
+          New Form
+        </h2>
+      </div>
+    </div>
+    <div class="w-full px-10 mb-8 mx-auto">
+      <div class="max-w-xl mx-auto mb-10 bg-slate-50 p-6 rounded-lg shadow">
+        <form action="/datasets/new" method="post">
+          <div class="mb-6">
+            <label
+              for="nama"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Nama</label
+            >
+            <input
+              type="text"
+              id="nama"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="ex: John Smith"
+              name="datasets[nama]"
+              required="true"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="email"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="datasets[email]"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required="true"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="handphone"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Handphone</label
+            >
+            <input
+              type="text"
+              id="handphone"
+              name="datasets[handphone]"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required="true"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="perusahaan"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Perusahaan</label
+            >
+            <input
+              type="text"
+              id="perusahaan"
+              name="datasets[perusahaan]"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required="true"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="countries"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >Program</label
+            >
+            <select
+              id="countries"
+              name="datasets[program]"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option value="Sertifikasi Social Media" selected>
+                Sertifikasi Social Media
+              </option>
+              <option value="Sertifikasi Digital Marketing">
+                Sertifikasi Digital Marketing
+              </option>
+              <option value="Sertifikasi Subsidi Sosial Media">
+                Sertifikasi Subsidi Sosial Media
+              </option>
+              <option value="Sertifikasi Subsidi Digital Marketing">
+                Sertifikasi Subsidi Digital Marketing
+              </option>
+            </select>
+          </div>
+          <div class="mb-6">
+            <label
+              for="batch"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Batch</label
+            >
+            <input
+              type="text"
+              id="batch"
+              name="datasets[batch]"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required="true"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="countries"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >Status</label
+            >
+            <select
+              id="countries"
+              name="datasets[status]"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option value="closing">Closing</option>
+              <option value="rapot">Rapot</option>
+              <option value="rapot">Schedule</option>
+              <option value="re-follow up">Re-Follow Up</option>
+              <option value="program">Program</option>
+            </select>
+          </div>
+          <div class="mb-6">
+            <label
+              for="countries"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >Sumber</label
+            >
+            <select
+              id="countries"
+              name="datasets[sumber]"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option value="kontak">Kontak</option>
+              <option value="whatsapp">Whatsapp</option>
+              <option value="wordpress">Wordpress</option>
+            </select>
+          </div>
+          <button
+            type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            Kirim
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

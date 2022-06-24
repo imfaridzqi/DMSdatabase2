@@ -1,0 +1,47 @@
+ <!-- Navbar -->
+ <header class="bg-transparent absolute top-0 left-0 w-full flex items-center z-10">
+    <div class="container">
+      <div class="flex items-center justify-between relative">
+        <div class="px-4">
+          <a href="/" class="font-bold text-lg text-sky-500 block py-6">DMS</a>
+        </div>
+      
+      <div class="flex items-center px-4">
+        <button id="hamburger" name="hamburger" type="button" class="block absolute right-4 lg:hidden">
+          <span class="hamburger-line transition duration-300 ease-in-out origin-top-left"></span>
+          <span class="hamburger-line transition duration-300 ease-in-out"></span>
+          <span class="hamburger-line transition duration-300 ease-in-out origin-bottom-left"></span>
+        </button>
+  
+        <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+          <ul class="block lg:flex">
+              
+            <li class="group">
+              <a href="/lowongan" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">Home</a>
+            </li>
+            <li class="group">
+              <a href="/employer" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">About</a>
+            </li>
+            
+            <li class="group">
+              <a href="/alumni" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">Lorem</a>
+            </li>
+            <% if (!currentUser) {%> 
+            <li class="group">
+              <a href="/users/login" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">Login</a>
+            </li>
+            <li class="group">
+              <a href="/users/register" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">Daftar</a>
+            </li>
+             <% } else { %> 
+            <li class="group">
+              <a href="/user/logout" class="text-base py-2 mx-8 flex group-hover:bg-sky-800 bg-sky-300 px-5 text-white rounded-md transition duration-300">Logout</a>
+            </li>
+            <% } %> 
+          </ul>
+        </nav>
+  
+      </div>
+    </div>
+  </div>
+  </header>
