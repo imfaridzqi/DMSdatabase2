@@ -1,6 +1,5 @@
 const Datasets = require("../models/datasets");
 const csv = require("csvtojson");
-const exportUsersToExcel = require("../public/src/exportService");
 const ExpressError = require("../utils/ExpressError");
 const xlsx = require("xlsx");
 
@@ -54,7 +53,8 @@ module.exports.index = async (req, res) => {
       },
     });
   }
-  let total = await Datasets.countDocuments(query);
+
+  let total = await Datasets.countDocuments(query).exec();
   let page = req.query.page ? parseInt(req.query.page) : 1;
   let perPage = req.query.perPage ? parseInt(req.query.perPage) : 20;
   let skip = (page - 1) * perPage;
@@ -75,17 +75,17 @@ module.exports.index = async (req, res) => {
   //   },
   // });
 
-  // if (req.query.sortBy && req.query.sortOrder) {
-  //   let sort = {};
-  //   sort[req.query.sortBy] = req.query.sortOrder == "asc" ? 1 : -1;
-  //   query.push({
-  //     $sort: sort,
-  //   });
-  // } else {
-  //   query.push({
-  //     $sort: { tglInput: -1 },
-  //   });
-  // }
+  if (req.query.sortBy && req.query.sortOrder) {
+    let sort = {};
+    sort[req.query.sortBy] = req.query.sortOrder == "asc" ? 1 : -1;
+    query.push({
+      $sort: sort,
+    });
+  } else {
+    query.push({
+      $sort: { tglInput: -1 },
+    });
+  }
 
   let datasets = await Datasets.aggregate(query);
   let q = req.query;
@@ -99,6 +99,10 @@ module.exports.index = async (req, res) => {
     q,
   });
 };
+
+// module.exports.index = async (req, res) => {
+//   res.json(res.paginatedResults);
+// };
 
 module.exports.renderNewForm = (req, res) => {
   res.render("datasets/new");
@@ -151,7 +155,14 @@ module.exports.exportCSV = (req, res) => {
       var temp = JSON.stringify(query);
       temp = JSON.parse(temp);
       var ws = xlsx.utils.json_to_sheet(temp);
-      var down = __dirname + "/export.xlsx";
+
+      let dateObj = new Date();
+      let month = dateObj.getUTCMonth() + 1;
+      let date = dateObj.getDate();
+      let year = dateObj.getFullYear();
+      let dateNow = date + "-" + month + "-" + year;
+
+      var down = __dirname + `/${dateNow}.xlsx`;
       xlsx.utils.book_append_sheet(wb, ws, "sheet1");
       xlsx.writeFile(wb, down);
       res.download(down);
@@ -172,5 +183,12 @@ module.exports.edit = async (req, res) => {
   });
   datasets.save();
   req.flash("success", "Data berhasil diupdate");
+  res.redirect("/datasets");
+};
+
+module.exports.delete = async (req, res) => {
+  const { id } = req.params;
+  const datasets = await Datasets.findByIdAndDelete(id);
+  req.flash("success", "Data berhasil dihapus");
   res.redirect("/datasets");
 };

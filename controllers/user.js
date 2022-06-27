@@ -9,7 +9,7 @@ module.exports.register = async (req, res) => {
     const registeredUser = await User.register(user, password);
     req.login(registeredUser, (err) => {
       if (err) return next(err);
-      req.flash("success", "welcome");
+      req.flash("success", `Selamat datang, ${req.user.username}`);
       res.redirect("/");
     });
   } catch (e) {
@@ -23,7 +23,7 @@ module.exports.renderLoginForm = (req, res) => {
 };
 
 module.exports.login = async (req, res) => {
-  req.flash("success", "Welcome Back!");
+  req.flash("success", `Selamat Datang, ${req.user.username}`);
   res.redirect("/datasets");
 };
 

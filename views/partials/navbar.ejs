@@ -15,23 +15,13 @@
   
         <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
           <ul class="block lg:flex">
-              
-            <li class="group">
-              <a href="/lowongan" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">Home</a>
-            </li>
-            <li class="group">
-              <a href="/employer" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">About</a>
-            </li>
-            
-            <li class="group">
-              <a href="/alumni" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">Lorem</a>
             </li>
             <% if (!currentUser) {%> 
             <li class="group">
-              <a href="/users/login" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">Login</a>
+              <a href="/user/login" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">Login</a>
             </li>
             <li class="group">
-              <a href="/users/register" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">Daftar</a>
+              <a href="/user/register" class="text-base text-slate-800 py-2 mx-8 flex group-hover:text-sky-500">Daftar</a>
             </li>
              <% } else { %> 
             <li class="group">

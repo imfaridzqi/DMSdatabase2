@@ -37,3 +37,8 @@ namaAscending.addEventListener("click", function () {
   namaAscending.classList.add("hidden");
   // namaDescending.classList.remove("hidden");
 });
+
+const deleteBtn = document.querySelector("#deleteBtn");
+deleteBtn.addEventListener("click", function () {
+  alert("Hello");
+});

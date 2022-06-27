@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -7,6 +11,8 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const flash = require("connect-flash");
 const methodOverride = require("method-override");
+
+const MongoStore = require("connect-mongo");
 
 const ExpressError = require("./utils/ExpressError");
 const User = require("./models/user");
@@ -18,8 +24,7 @@ const datasetsRoutes = require("./routes/datasets");
 const app = express();
 const port = process.env.port || 4000;
 
-// Database Config
-const dbUrl = "mongodb://localhost:27017/DMSDatabase";
+const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/DMSDatabase";
 
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
@@ -31,6 +36,8 @@ db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", () => {
   console.log("Database connected");
 });
+
+const secret = process.env.SECRET || "thisshouldbeabettersecret";
 // end Database Config
 
 app.engine("ejs", ejsMate);
@@ -41,8 +48,15 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: true }));
 
+app.use(
+  session({
+    secret: secret,
+    store: MongoStore.create({ mongoUrl: dbUrl }),
+  })
+);
+
 const sessionConfig = {
-  secret: "thisshouldbeabettersecret",
+  secret: secret,
   resave: false,
   saveUninitialized: true,
   cookie: {

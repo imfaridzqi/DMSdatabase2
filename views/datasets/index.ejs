@@ -2,7 +2,7 @@
   <!-- Table Data -->
 
   <section id="table">
-    <div class="container">
+    <div class="container mx-auto">
       <div class="w-full px-4 pt-36">
         <div class="max-w-xl mx-auto text-center mb-16">
           <h2 class="font-bold text-slate-800 text-3xl mb-2 sm:text-2xl lg:text-3xl">
@@ -50,24 +50,26 @@
                       <select id="program" name="program"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected="" value="">Pilih Program...</option>
-                        <option value="Social Media">Social Media</option>
-                        <option value="Digital Marketing">
-                          Digital Marketing
+                        <option value="ssm">Setifiksai Social Media</option>
+                        <option value="sdm">
+                          Sertifikasi Digital Marketing
+                        </option>
+                        <option value="subsidism">
+                          Subsidi Social Media
+                        </option>
+                        <option value="subsididm">
+                          Subsidi Digital Marketing
                         </option>
                       </select>
                     </div>
                     <div class="mx-2 w-full">
-                      <select id="batch" name="batch"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected="" value="">Pilih Batch...</option>
-                        <option value="10">10</option>
-                        <option value="11">
-                          11
-                        </option>
-                        <option value="12">
-                          12
-                        </option>
-                      </select>
+                    <input
+                      type="text"
+                      id="batch"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="Batch"
+                      name="batch"
+                    />
                     </div>
                     <div class="mx-2 w-full">
                       <select id="status" name="status"
@@ -75,7 +77,16 @@
                         <option selected="" value="">Pilih Status</option>
                         <option value="closing">Closing</option>
                         <option value="open">
-                          Open
+                          Schedule
+                        </option>
+                        <option value="refollow up">
+                          Refollow Up
+                        </option>
+                        <option value="program">
+                          Program
+                        </option>
+                        <option value="rapot">
+                          Rapot
                         </option>
                       </select>
                     </div>
@@ -118,13 +129,6 @@
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" class="p-4">
-                  <div class="flex items-center">
-                    <input id="checkbox-all-search" type="checkbox"
-                      class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                    <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                  </div>
-                </th>
                 <th scope="col" class="px-6 py-3">No.</th>
                 <th scope="col" class="px-6 py-3">
                   Nama
@@ -151,8 +155,12 @@
                 <th scope="col" class="px-6 py-3">Program</th>
                 <th scope="col" class="px-6 py-3">Batch</th>
                 <th scope="col" class="px-6 py-3">Status</th>
+                <th scope="col" class="px-6 py-3">Tanggal Input</th>
                 <th scope="col" class="px-6 py-3">
                   <span class="sr-only">Edit</span>
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  <span class="sr-only">Delete</span>
                 </th>
               </tr>
             </thead>
@@ -161,13 +169,7 @@
                 <% for (let i=0; i<datasets.length; i++) {%>
                   <tr
                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <td class="w-4 p-4">
-                      <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox"
-                          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                      </div>
-                    </td>
+                    
                     <td class="px-6 py-4">
                       <%= i + 1 %>
                     </td>
@@ -192,9 +194,17 @@
                     <td class="px-6 py-4">
                       <%= datasets[i].status %>
                     </td>
+                    <td class="px-6 py-4">
+                      <%= datasets[i].tglInput %>
+                    </td>
                     <td class="px-6 py-4 text-right">
                       <a href="/datasets/<%= datasets[i]._id %>"
                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                      <form action="/datasets/<%= datasets[i]._id %>?_method=delete" method="post">
+                        <button id="deleteBtn" class="text-rose-500 hover:text-rose-800 hover:underline">Hapus</button>
+                      </form>
                     </td>
                   </tr>
                   <% } %>
@@ -242,16 +252,4 @@
       </div>
 
     </div>
-    <h1> Total data:
-      <%= total %> 
-    </h1>
-    <h1>
-      total page:
-      <%= totalPages %>
-    </h1>
-    <h1>
-      data perPage:
-      <%= perPage %>
-    </h1>
-    <h1><%= datasets.length %> </h1>
   </section>

@@ -2,10 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 let dateObj = new Date();
-let month = dateObj.getUTCMonth();
+let month = dateObj.getMonth();
 let date = dateObj.getDate();
 let year = dateObj.getFullYear();
-let dateNow = date + "/" + month + "/" + year;
+let dateNow = year + "-" + month + "-" + date;
 
 const datasetsSchema = new Schema({
   nama: {
@@ -46,7 +46,7 @@ const datasetsSchema = new Schema({
     type: String,
   },
   tglInput: {
-    type: String,
+    type: Date,
     default: dateNow,
   },
   sumber: {
