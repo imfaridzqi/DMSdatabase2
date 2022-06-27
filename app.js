@@ -22,7 +22,7 @@ const userRoutes = require("./routes/user");
 const datasetsRoutes = require("./routes/datasets");
 
 const app = express();
-const port = process.env.port || 4000;
+const PORT = process.env.PORT || 4000;
 
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/DMSDatabase";
 
@@ -100,6 +100,6 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error", { err });
 });
 
-app.listen(port, () => {
-  console.log("App listening on port", port);
+app.listen(PORT, () => {
+  console.log("App listening on port", PORT);
 });
