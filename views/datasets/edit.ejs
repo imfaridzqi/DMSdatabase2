@@ -186,6 +186,47 @@
               <% } %>
             </select>
           </div>
+          <div class="mb-6">
+            <label
+              for="batch"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+              >Batch</label
+            >
+            <input
+              type="text"
+              id="batch"
+              name="datasets[batch]"
+              value="<%= datasets.barrier %>"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              required="true"
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="sumber"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >Sumber</label
+            >
+            <select
+              id="sumber"
+              name="datasets[sumber]"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <% if (datasets.sumber==="kontak") {%>
+              <option value="kontak" selected>Kontak</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="wordpress">Wordpress</option>
+              <% } else if(datasets.sumber==="whatsapp") {%>
+              <option value="kontak">Kontak</option>
+              <option value="whatsapp" selected>WhatsApp</option>
+              <option value="wordpress">Wordpress</option>
+              <% } else if (datasets.sumber==="wordpress") {%>
+              <option value="kontak">Kontak</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="wordpress" selected>Wordpress</option>
+              <% } %>
+            </select>
+          </div>
           <button
             type="submit"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

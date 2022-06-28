@@ -30,10 +30,10 @@ module.exports.index = async (req, res) => {
     });
   }
 
-  if (req.query.status) {
+  if (req.query.program) {
     query.push({
       $match: {
-        status: req.query.status,
+        program: req.query.program,
       },
     });
   }
@@ -46,10 +46,24 @@ module.exports.index = async (req, res) => {
     });
   }
 
-  if (req.query.program) {
+  if (req.query.status) {
     query.push({
       $match: {
-        program: req.query.program,
+        status: req.query.status,
+      },
+    });
+  }
+  if (req.query.barrier) {
+    query.push({
+      $match: {
+        barrier: req.query.barrier,
+      },
+    });
+  }
+  if (req.query.sumber) {
+    query.push({
+      $match: {
+        sumber: req.query.sumber,
       },
     });
   }
