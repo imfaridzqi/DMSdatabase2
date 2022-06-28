@@ -157,7 +157,7 @@ module.exports.exportCSV = (req, res) => {
       var ws = xlsx.utils.json_to_sheet(temp);
 
       let dateObj = new Date();
-      let month = dateObj.getUTCMonth() + 1;
+      let month = dateObj.getMonth() + 1;
       let date = dateObj.getDate();
       let year = dateObj.getFullYear();
       let dateNow = date + "-" + month + "-" + year;
