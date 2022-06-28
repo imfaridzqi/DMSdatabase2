@@ -54,7 +54,7 @@ module.exports.index = async (req, res) => {
     });
   }
 
-  let total = await Datasets.countDocuments(query).exec();
+  let total = await Datasets.countDocuments(query);
   let page = req.query.page ? parseInt(req.query.page) : 1;
   let perPage = req.query.perPage ? parseInt(req.query.perPage) : 20;
   let skip = (page - 1) * perPage;
