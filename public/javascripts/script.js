@@ -19,26 +19,37 @@ hamburger.addEventListener("click", function () {
   navMenu.classList.toggle("hidden");
 });
 
-const alertSuccess = document.getElementById("alert-success");
-const alertDanger = document.getElementById("alert-danger");
+const flashAlert = document.querySelector(".flash-alert");
 
-alertSuccess.addEventListener("click", function () {
-  alertSuccess.classList.add("hidden");
+flashAlert.addEventListener("click", function () {
+  flashAlert.classList.add("hidden");
 });
 
-alertDanger.addEventListener("click", function () {
-  alertDanger.classList.add("hidden");
+const showModal = document.querySelector("#showModal");
+const uploadModal = document.querySelector("#uploadModal");
+const closeModal = document.querySelector("#closeModal");
+const batal = document.querySelector("#batal");
+
+showModal.addEventListener("click", function () {
+  uploadModal.classList.remove("hidden");
 });
 
-const namaAscending = document.querySelector("#namaAscending");
-const namaDescending = document.querySelector("#namaDescending");
-
-namaAscending.addEventListener("click", function () {
-  namaAscending.classList.add("hidden");
-  // namaDescending.classList.remove("hidden");
+batal.addEventListener("click", function () {
+  uploadModal.classList.add("hidden");
 });
 
-const deleteBtn = document.querySelector("#deleteBtn");
+closeModal.addEventListener("click", function () {
+  uploadModal.classList.add("hidden");
+});
+
+const deleteBtn = document.querySelector(".delete-btn");
+const deleteModal = document.querySelector(".delete-modal");
+const cancelDelete = document.querySelector(".cancel-delete");
+
 deleteBtn.addEventListener("click", function () {
-  alert("Hello");
+  deleteModal.classList.remove("hidden");
+});
+
+cancelDelete.addEventListener("click", function () {
+  deleteModal.classList.add("hidden");
 });

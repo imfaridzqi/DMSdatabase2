@@ -4,7 +4,6 @@ const { isLoggedIn, paginatedResults } = require("../middleware");
 const multer = require("multer");
 const datasets = require("../controllers/datasets");
 const catchAsync = require("../utils/catchAsync");
-const Datasets = require("../models/datasets");
 
 // Multer Storage
 
@@ -32,9 +31,9 @@ router.post("/", isLoggedIn, uploads.single("csv"), datasets.uploadCSV);
 
 router.get("/new", isLoggedIn, datasets.renderNewForm);
 
-router.post("/new", catchAsync(datasets.create));
+router.post("/new", isLoggedIn, catchAsync(datasets.create));
 
-router.post("/export", datasets.exportCSV);
+router.post("/export", isLoggedIn, datasets.exportCSV);
 
 router.get("/:id", isLoggedIn, catchAsync(datasets.renderEditForm));
 

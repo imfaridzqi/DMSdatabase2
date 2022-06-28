@@ -13,9 +13,9 @@ router.get("/login", user.renderLoginForm);
 router.get("/fakeUser", async (req, res) => {
   const password = "Cemara3dK6No33";
   const user = new User({
-    username: "admin",
-    email: "sales@tuw.co.id",
-    role: "admin",
+    username: "info@tuw.co.id",
+    email: "info@tuw.co.id",
+    role: "regular",
   });
   const newUser = await User.register(user, password);
   res.send(newUser);

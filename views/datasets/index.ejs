@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %>
   <!-- Table Data -->
-
+  
   <section id="table">
     <div class="container mx-auto">
       <div class="w-full px-4 pt-36">
@@ -12,7 +12,7 @@
       </div>
       <div class="w-full px-10 mb-8 mx-auto">
         <!-- Table -->
-        <div class="max-w-lg mb-10">
+        <!-- <div class="max-w-lg mb-10">
           <label class="block mb-2 text-sm font-medium text-slate-800" for="file_input">Upload CSV File</label>
           <form class="flex items-center" action="/datasets" method="post" enctype="multipart/form-data">
             <div class="relative w-full">
@@ -25,10 +25,10 @@
               Upload
             </button>
           </form>
-        </div>
+        </div> -->
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-10">
           <div class="flex">
-            <div class="p-4">
+            <div class="p-4 mx-auto">
               <form action="/datasets" method="get">
                 <label for="table-search" class="sr-only">Search</label>
                 <div class="relative mt-1">
@@ -76,7 +76,7 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected="" value="">Pilih Status</option>
                         <option value="closing">Closing</option>
-                        <option value="open">
+                        <option value="schedule">
                           Schedule
                         </option>
                         <option value="refollow up">
@@ -102,7 +102,7 @@
                     </div>
 
 
-                    <div>
+                    <!-- <div>
                       <a href="/datasets/new" type="submit"
                         class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -111,12 +111,12 @@
                             d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                         </svg>
                       </a>
-                    </div>
+                    </div> -->
                     
                   </div>
                 </div>
               </form>
-              <div>
+              <div class="mt-1">
                 <form action="/datasets/export" method="post">
                 <button type="submit"
         class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -155,6 +155,7 @@
                 <th scope="col" class="px-6 py-3">Program</th>
                 <th scope="col" class="px-6 py-3">Batch</th>
                 <th scope="col" class="px-6 py-3">Status</th>
+                <th scope="col" class="px-6 py-3">Barrier</th>
                 <th scope="col" class="px-6 py-3">Tanggal Input</th>
                 <th scope="col" class="px-6 py-3">
                   <span class="sr-only">Edit</span>
@@ -195,7 +196,10 @@
                       <%= datasets[i].status %>
                     </td>
                     <td class="px-6 py-4">
-                      <%= datasets[i].createdAt %>
+                      <%= datasets[i].barrier %>
+                    </td>
+                    <td class="px-6 py-4">
+                      <%= datasets[i].createdAt.getDate() %>/<%= datasets[i].createdAt.getMonth() + 1 %>/<%= datasets[i].createdAt.getFullYear() %>
                     </td>
                     <td class="px-6 py-4 text-right">
                       <a href="/datasets/<%= datasets[i]._id %>"
@@ -205,6 +209,7 @@
                       <form action="/datasets/<%= datasets[i]._id %>?_method=delete" method="post">
                         <button id="deleteBtn" class="text-rose-500 hover:text-rose-800 hover:underline">Hapus</button>
                       </form>
+                      <!-- <button class="delete-btn text-rose-500 hover:text-rose-800 hover:underline">Hapus</button> -->
                     </td>
                   </tr>
                   <% } %>

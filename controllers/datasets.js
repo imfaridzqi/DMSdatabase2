@@ -9,7 +9,7 @@ module.exports.index = async (req, res) => {
       $lookup: {
         from: "datasets",
         localField: "nama",
-        foreignField: "tglInput",
+        foreignField: "createdAt",
         as: "datasets",
       },
     },

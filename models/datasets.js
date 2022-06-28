@@ -55,6 +55,9 @@ const datasetsSchema = new Schema(
       lowercase: true,
       enum: ["kontak", "whatsapp", "wordpress"],
     },
+    barrier: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
