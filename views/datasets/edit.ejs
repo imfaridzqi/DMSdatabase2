@@ -13,7 +13,11 @@
     </div>
     <div class="w-full px-10 mb-8 mx-auto">
       <div class="max-w-xl mx-auto mb-10 bg-slate-50 p-6 rounded-lg shadow">
-        <form action="/datasets/<%= datasets._id %>?_method=PUT" method="post">
+        <form
+          action="/datasets/<%= datasets._id %>?_method=PUT"
+          method="post"
+          autocomplete="off"
+        >
           <div class="mb-6">
             <label
               for="nama"
@@ -140,7 +144,7 @@
               <option value="schedule">Schedule</option>
               <option value="refollow up" selected>refollow Up</option>
               <option value="program">Program</option>
-              <% } else if (datasets.status==="refollow up") {%>
+              <% } else if (datasets.status==="program") {%>
               <option value="closing">Closing</option>
               <option value="rapot">Rapot</option>
               <option value="schedule">Schedule</option>
@@ -149,6 +153,7 @@
               <% } %>
             </select>
           </div>
+
           <div class="mb-6">
             <label
               for="concern"
