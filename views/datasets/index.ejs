@@ -171,12 +171,14 @@
                 <th scope="col" class="px-6 py-3">Barrier</th>
                 <th scope="col" class="px-6 py-3">Sumber</th>
                 <th scope="col" class="px-6 py-3">Tanggal Input</th>
+                <% if (currentUser && currentUser.role == "admin") {%> 
                 <th scope="col" class="px-6 py-3">
                   <span class="sr-only">Edit</span>
                 </th>
                 <th scope="col" class="px-6 py-3">
                   <span class="sr-only">Delete</span>
                 </th>
+                <% } %> 
               </tr>
             </thead>
             <tbody>
@@ -218,16 +220,19 @@
                     <td class="px-6 py-4">
                       <%= datasets[i].createdAt.getDate() %>/<%= datasets[i].createdAt.getMonth() + 1 %>/<%= datasets[i].createdAt.getFullYear() %>
                     </td>
+                    <% if (currentUser && currentUser.role == "admin") {%> 
                     <td class="px-6 py-4 text-right">
                       <a href="/datasets/<%= datasets[i]._id %>"
                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                     </td>
+                   
                     <td class="px-6 py-4 text-right">
                       <form action="/datasets/<%= datasets[i]._id %>?_method=delete" method="post">
                         <button id="deleteBtn" class="text-rose-500 hover:text-rose-800 hover:underline">Hapus</button>
                       </form>
                       <!-- <button class="delete-btn text-rose-500 hover:text-rose-800 hover:underline">Hapus</button> -->
                     </td>
+                    <% } %> 
                   </tr>
                   <% } %>
                     <% } %>
@@ -247,7 +252,7 @@
             <div class="inline-flex mt-2 xs:mt-0">
               <!-- Buttons -->
               <% if (q.page > 1) {%> 
-              <a href="/datasets?keyword=<%= q.keyword %>&program=<%= q.program %>&batch=<%= q.batch %>&status=<%= q.status%>&page=<%= page-1 %>"
+              <a href="/datasets?keyword=<%= q.keyword %>&program=<%= q.program %>&batch=<%= q.batch %>&status=<%= q.status%>&sumber=<%= q.sumber %>&page=<%= page-1 %>"
                 class="inline-flex items-center py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-l hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                 <svg class="mr-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd"
@@ -258,7 +263,7 @@
               </a>
               <% } %>
               <% if (q.page != totalPages) { %>  
-              <a href="/datasets?keyword=<%= q.keyword %>&program=<%= q.program %>&batch=<%= q.batch %>&status=<%= q.status %>&page=<%= page+1 %>"
+              <a href="/datasets?keyword=<%= q.keyword %>&program=<%= q.program %>&batch=<%= q.batch %>&status=<%= q.status %>&sumber=<%= q.sumber %>&page=<%= page+1 %>"
                 class="inline-flex items-center py-2 px-4 text-sm font-medium text-white bg-gray-800 rounded-r border-0 border-l border-gray-700 hover:bg-gray-900 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                 Next
                 <svg class="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
