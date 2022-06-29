@@ -64,7 +64,7 @@ module.exports.index = async (req, res) => {
       },
     });
   }
-
+  let q = req.query;
   let total = await Datasets.countDocuments(query);
   let page = req.query.page ? parseInt(req.query.page) : 1;
   let perPage = req.query.perPage ? parseInt(req.query.perPage) : 20;
@@ -98,8 +98,8 @@ module.exports.index = async (req, res) => {
     });
   }
 
-  let datasets = await Datasets.aggregate(query);
-  let q = req.query;
+  let datasets = await Datasets.aggregate(query).sort({ createdAt: -1 });
+
   let totalPages = Math.ceil(total / perPage);
   res.render(`datasets/`, {
     datasets,
