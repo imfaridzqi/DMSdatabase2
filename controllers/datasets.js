@@ -22,9 +22,6 @@ module.exports.index = async (req, res) => {
           {
             nama: { $regex: req.query.keyword, $options: "i" },
           },
-          {
-            program: { $regex: req.query.keyword, $options: "i" },
-          },
         ],
       },
     });
@@ -33,7 +30,7 @@ module.exports.index = async (req, res) => {
   if (req.query.program) {
     query.push({
       $match: {
-        program: req.query.program,
+        program: { $regex: req.query.program, $options: "i" },
       },
     });
   }
@@ -53,10 +50,10 @@ module.exports.index = async (req, res) => {
       },
     });
   }
-  if (req.query.barrier) {
+  if (req.query.concern) {
     query.push({
       $match: {
-        barrier: req.query.barrier,
+        barrier: req.query.concern,
       },
     });
   }

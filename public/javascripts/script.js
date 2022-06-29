@@ -42,14 +42,19 @@ closeModal.addEventListener("click", function () {
   uploadModal.classList.add("hidden");
 });
 
-const deleteBtn = document.querySelector(".delete-btn");
-const deleteModal = document.querySelector(".delete-modal");
-const cancelDelete = document.querySelector(".cancel-delete");
+const pilihTanggal = document.querySelector("#pilih-tanggal");
+const calendar = document.querySelector(".tanggal-modal");
+const closeTanggal = document.querySelector("#close-tanggal");
+const batalTanggal = document.querySelector("#batal-tanggal");
 
-deleteBtn.addEventListener("click", function () {
-  deleteModal.classList.remove("hidden");
+pilihTanggal.addEventListener("click", function () {
+  calendar.classList.remove("hidden");
 });
 
-cancelDelete.addEventListener("click", function () {
-  deleteModal.classList.add("hidden");
+closeTanggal.addEventListener("click", function () {
+  calendar.classList.add("hidden");
+});
+
+batalTanggal.addEventListener("click", function () {
+  calendar.classList.add("hidden");
 });

@@ -35,10 +35,13 @@ const datasetsSchema = new Schema(
       lowercase: true,
       enum: ["closing", "rapot", "schedule", "refollow up", "program"],
     },
+    // program: {
+    //   type: String,
+    //   lowercase: true,
+    //   enum: ["ssm", "sdm", "subsidism", "subsididm"],
+    // },
     program: {
       type: String,
-      lowercase: true,
-      enum: ["ssm", "sdm", "subsidism", "subsididm"],
     },
     keterangan: {
       type: String,
@@ -55,8 +58,11 @@ const datasetsSchema = new Schema(
       lowercase: true,
       enum: ["kontak", "whatsapp", "wordpress"],
     },
-    barrier: {
+    concern: {
       type: String,
+    },
+    tglRefollowUp: {
+      type: Date,
     },
   },
   { timestamps: true }
