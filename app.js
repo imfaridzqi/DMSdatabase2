@@ -87,10 +87,10 @@ app.use((req, res, next) => {
 app.use("/user", userRoutes);
 app.use("/datasets", datasetsRoutes);
 
-app.get("/deleteall", async (req, res) => {
-  await Datasets.deleteMany();
-  res.redirect("/");
-});
+// app.get("/deleteall", async (req, res) => {
+//   await Datasets.deleteMany();
+//   res.redirect("/");
+// });
 
 app.get("/", isLoggedIn, async (req, res) => {
   res.redirect("/datasets");
