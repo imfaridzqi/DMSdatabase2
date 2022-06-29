@@ -8,8 +8,8 @@ module.exports.index = async (req, res) => {
     {
       $lookup: {
         from: "datasets",
-        localField: "nama",
-        foreignField: "createdAt",
+        localField: "createdAt",
+        foreignField: "nama",
         as: "datasets",
       },
     },
