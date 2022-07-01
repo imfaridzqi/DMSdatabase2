@@ -41,4 +41,12 @@ router.put("/:id", isLoggedIn, catchAsync(datasets.edit));
 
 router.delete("/:id", isLoggedIn, catchAsync(datasets.delete));
 
+router.get(
+  "/:id/aturJadwal",
+  isLoggedIn,
+  catchAsync(datasets.renderAturJadwalForm)
+);
+
+router.put("/:id", isLoggedIn, catchAsync(datasets.aturJadwal));
+
 module.exports = router;

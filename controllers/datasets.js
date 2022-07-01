@@ -99,7 +99,6 @@ module.exports.index = async (req, res) => {
   }
 
   let datasets = await Datasets.aggregate(query).sort({ createdAt: -1 });
-
   let totalPages = Math.ceil(total / perPage);
   res.render(`datasets/`, {
     datasets,
@@ -113,6 +112,56 @@ module.exports.index = async (req, res) => {
 
 // module.exports.index = async (req, res) => {
 //   res.json(res.paginatedResults);
+// };
+
+// module.exports.index = async (req, res) => {
+//   const perPage = 5;
+//   const page = parseInt(req.query.page);
+
+//   const totalDatasets = await Datasets.countDocuments({});
+
+//   const datasets = await Datasets.find(
+//     {},
+//     {},
+//     {
+//       createdAt: -1,
+//       skip: perPage * (page - 1),
+//       limit: perPage,
+//     }
+//   );
+//   const totalPages = Math.ceil(totalDatasets / perPage);
+//   res.send({
+//     datasets: datasets,
+//     totalPages,
+//     currentPage: page,
+//     totalDatasets,
+//     showingFrom: perPage * (page - 1) + 1,
+//     showingUntil:
+//       perPage * page > totalDatasets ? totalDatasets : perPage * page,
+//   });
+// };
+
+// module.exports.index = async (req, res) => {
+//   const perPage = 10;
+//   const page = parseInt(req.query.page);
+
+//   const totalDatasets = await Datasets.countDocuments({}).exec();
+
+//   const datasets = await Datasets.find()
+//     .sort({ createdAt: -1 })
+//     .skip(perPage * (page - 1))
+//     .limit(perPage);
+
+//   const totalPages = Math.ceil(totalDatasets / perPage);
+//   res.send({
+//     datasets: datasets,
+//     totalPages,
+//     currentPage: page,
+//     totalDatasets,
+//     showingFrom: perPage * (page - 1) + 1,
+//     showingUntil:
+//       perPage * page > totalDatasets ? totalDatasets : perPage * page,
+//   });
 // };
 
 module.exports.renderNewForm = (req, res) => {
@@ -201,5 +250,21 @@ module.exports.delete = async (req, res) => {
   const { id } = req.params;
   const datasets = await Datasets.findByIdAndDelete(id);
   req.flash("success", "Data berhasil dihapus");
+  res.redirect("/datasets");
+};
+
+module.exports.renderAturJadwalForm = async (req, res) => {
+  const { id } = req.params;
+  const datasets = await Datasets.findById(id);
+  res.render("datasets/aturJadwal", { datasets });
+};
+
+module.exports.aturJadwal = async (req, res) => {
+  const { id } = req.params;
+  const datasets = await Datasets.findByIdAndUpdate(id, {
+    ...req.body.datasets,
+  });
+  datasets.save();
+  req.flash("success", "Jadwal Re-Follow Up telah diatur");
   res.redirect("/datasets");
 };
