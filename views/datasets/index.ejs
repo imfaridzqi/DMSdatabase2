@@ -138,6 +138,7 @@
                   </div>
                 </div>
               </form>
+              <% if (currentUser.role == "admin") {%> 
               <div class="mt-1">
                 <form action="/datasets/export" method="post">
                 <button type="submit"
@@ -146,6 +147,7 @@
       </button>
     </form>
               </div>
+              <% } %> 
             </div>
           </div>
           <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
