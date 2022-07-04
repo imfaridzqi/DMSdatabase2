@@ -22,10 +22,10 @@ window.onload = function () {
   const closeModal = document.querySelector("#closeModal");
   const batal = document.querySelector("#batal");
 
-  var pilihTanggal = document.querySelector("#pilih-tanggal");
-  var calendar = document.querySelector("#tanggal-modal");
-  var closeTanggal = document.querySelector("#close-tanggal");
-  var batalTanggal = document.querySelector("#batal-tanggal");
+  // var pilihTanggal = document.querySelector("#pilih-tanggal");
+  // var calendar = document.querySelector("#tanggal-modal");
+  // var closeTanggal = document.querySelector("#close-tanggal");
+  // var batalTanggal = document.querySelector("#batal-tanggal");
 
   hamburger.addEventListener("click", function () {
     hamburger.classList.toggle("hamburger-active");
@@ -48,15 +48,15 @@ window.onload = function () {
     uploadModal.classList.add("hidden");
   });
 
-  pilihTanggal.addEventListener("click", function () {
-    calendar.classList.remove("hidden");
-  });
+  //   pilihTanggal.addEventListener("click", function () {
+  //     calendar.classList.remove("hidden");
+  //   });
 
-  closeTanggal.addEventListener("click", function () {
-    calendar.classList.add("hidden");
-  });
+  //   closeTanggal.addEventListener("click", function () {
+  //     calendar.classList.add("hidden");
+  //   });
 
-  batalTanggal.addEventListener("click", function () {
-    calendar.classList.add("hidden");
-  });
+  //   batalTanggal.addEventListener("click", function () {
+  //     calendar.classList.add("hidden");
+  //   });
 };

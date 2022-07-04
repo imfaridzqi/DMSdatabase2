@@ -241,6 +241,10 @@ module.exports.edit = async (req, res) => {
   const datasets = await Datasets.findByIdAndUpdate(id, {
     ...req.body.datasets,
   });
+  const body = { ...req.body.datasets };
+  if (body.status != "refollow up") {
+    datasets.tglRefollowUp = "";
+  }
   datasets.save();
   req.flash("success", "Data berhasil diupdate");
   res.redirect("/datasets");
