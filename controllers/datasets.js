@@ -53,7 +53,7 @@ module.exports.index = async (req, res) => {
   if (req.query.concern) {
     query.push({
       $match: {
-        barrier: req.query.concern,
+        concern: req.query.concern,
       },
     });
   }
@@ -64,10 +64,17 @@ module.exports.index = async (req, res) => {
       },
     });
   }
+  if (req.query.tglInput) {
+    query.push({
+      $match: {
+        tglInput: req.query.tglInput,
+      }
+    })
+  }
   let q = req.query;
   let total = await Datasets.countDocuments(query);
   let page = req.query.page ? parseInt(req.query.page) : 1;
-  let perPage = req.query.perPage ? parseInt(req.query.perPage) : 20;
+  let perPage = req.query.perPage ? parseInt(req.query.perPage) : 30;
   let skip = (page - 1) * perPage;
   query.push({
     $skip: skip,
@@ -100,7 +107,8 @@ module.exports.index = async (req, res) => {
 
   let datasets = await Datasets.aggregate(query).sort({ createdAt: -1 });
   let totalPages = Math.ceil(total / perPage);
-  res.render(`datasets/`, {
+
+  res.render('datasets/', {
     datasets,
     page,
     perPage,
@@ -171,6 +179,9 @@ module.exports.renderNewForm = (req, res) => {
 module.exports.create = async (req, res) => {
   if (!req.body.datasets) throw new ExpressError("Invalid Data", 400);
   const datasets = new Datasets({ ...req.body.datasets });
+  let time = Date.parse({...req.body.datasets}.tglInput)
+  let now = new Date(time);
+  let tglInput = now.toLocaleDateString("id-ID")
   const newDatasets = await datasets.save();
   req.flash("success", "Data berhasil ditambah");
   res.redirect("/datasets");

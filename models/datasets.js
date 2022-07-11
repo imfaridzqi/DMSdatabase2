@@ -33,7 +33,7 @@ const datasetsSchema = new Schema(
     status: {
       type: String,
       lowercase: true,
-      enum: ["closing", "rapot", "schedule", "refollow up", "program"],
+      enum: ["closing", "rapoo", "schedule", "refollow up", "program", "price"],
     },
     // program: {
     //   type: String,
@@ -49,10 +49,9 @@ const datasetsSchema = new Schema(
     batch: {
       type: String,
     },
-    // tglInput: {
-    //   type: Date,
-    //   default: dateNow,
-    // },
+    tglInput: {
+      type: Date,
+    },
     sumber: {
       type: String,
       lowercase: true,
@@ -60,12 +59,13 @@ const datasetsSchema = new Schema(
     },
     concern: {
       type: String,
+      lowercase: true,
+      enum: ["quality", "cost", "delivery", "service"]
     },
     tglRefollowUp: {
       type: Date,
     },
   },
-  { timestamps: true }
 );
 
 module.exports = mongoose.model("Datasets", datasetsSchema);

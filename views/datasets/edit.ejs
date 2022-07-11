@@ -7,7 +7,7 @@
         <h2
           class="font-bold text-slate-800 text-3xl mb-2 sm:text-2xl lg:text-3xl"
         >
-          Edit Form
+          Form Edit Data
         </h2>
       </div>
     </div>
@@ -22,7 +22,7 @@
             <label
               for="nama"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >Nama</label
+              >Nama Lengkap</label
             >
             <input
               type="text"
@@ -45,7 +45,6 @@
               id="email"
               name="datasets[email]"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required="true"
               value="<%= datasets.email %>"
             />
           </div>
@@ -53,14 +52,13 @@
             <label
               for="handphone"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >Handphone</label
+              >Nomor Handphone/WhatsApp</label
             >
             <input
               type="text"
               id="handphone"
               name="datasets[handphone]"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required="true"
               value="<%= datasets.handphone %>"
             />
           </div>
@@ -75,7 +73,6 @@
               id="perusahaan"
               name="datasets[perusahaan]"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required="true"
               value="<%= datasets.perusahaan %>"
             />
           </div>
@@ -88,7 +85,7 @@
             <input
               type="text"
               id="program"
-              name="datasets[prgoram]"
+              name="datasets[program]"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               required="true"
               value="<%= datasets.program %>"
@@ -98,20 +95,19 @@
             <label
               for="batch"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-              >Batch</label
+              >Batch Program</label
             >
             <input
               type="text"
               id="batch"
               name="datasets[batch]"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required="true"
               value="<%= datasets.batch %>"
             />
           </div>
           <div class="mb-6">
             <label
-              for="statuss"
+              for="status"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
               >Status</label
             >
@@ -122,34 +118,46 @@
             >
               <% if (datasets.status==="closing") {%>
               <option value="closing" selected>Closing</option>
-              <option value="rapot">Rapot</option>
+              <option value="rapoo">Rapoo</option>
               <option value="schedule">Schedule</option>
-              <option value="refollow up">refollow Up</option>
+              <option value="refollow up">Refollow Up</option>
               <option value="program">Program</option>
-              <% } else if(datasets.status==="rapot") {%>
+              <option value="price">Price</option>
+              <% } else if(datasets.status==="rapoo") {%>
               <option value="closing">Closing</option>
-              <option value="rapot" selected>Rapot</option>
+              <option value="rapoo" selected>Rapoo</option>
               <option value="schedule">Schedule</option>
-              <option value="refollow up">refollow Up</option>
+              <option value="refollow up">Refollow Up</option>
               <option value="program">Program</option>
+              <option value="price">Price</option>
               <% } else if (datasets.status==="schedule") {%>
               <option value="closing">Closing</option>
-              <option value="rapot">Rapot</option>
+              <option value="rapoo">Rapoo</option>
               <option value="schedule" selected>Schedule</option>
-              <option value="refollow up">refollow Up</option>
+              <option value="refollow up">Refollow Up</option>
               <option value="program">Program</option>
+              <option value="price">Price</option>
               <% } else if(datasets.status==="refollow up") {%>
               <option value="closing">Closing</option>
-              <option value="rapot">Rapot</option>
+              <option value="rapoo">Rapoo</option>
               <option value="schedule">Schedule</option>
-              <option value="refollow up" selected>refollow Up</option>
+              <option value="refollow up" selected>Refollow Up</option>
               <option value="program">Program</option>
+              <option value="price">Price</option>
               <% } else if (datasets.status==="program") {%>
               <option value="closing">Closing</option>
-              <option value="rapot">Rapot</option>
+              <option value="rapoo">Rapoo</option>
               <option value="schedule">Schedule</option>
-              <option value="refollow up">refollow Up</option>
+              <option value="refollow up">Refollow Up</option>
               <option value="program" selected>Program</option>
+              <option value="price">Price</option>
+              <% } else if (datasets.status==="price") {%>
+                <option value="closing">Closing</option>
+                <option value="rapoo">Rapoo</option>
+                <option value="schedule">Schedule</option>
+                <option value="refollow up">Refollow Up</option>
+                <option value="program" >Program</option>
+                <option value="price" selected>Price</option>
               <% } %>
             </select>
           </div>
@@ -160,14 +168,33 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >Concern</label
             >
-            <input
-              type="text"
+            <select
               id="concern"
               name="datasets[concern]"
-              value="<%= datasets.concern %>"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required="true"
-            />
+            >
+              <% if (datasets.concern==="quality") {%>
+              <option value="quality" selected>Quality</option>
+              <option value="cost">Cost</option>
+              <option value="delivery">Delivery</option>
+              <option value="service">Service</option>
+              <% } else if(datasets.concern==="cost") {%>
+                <option value="quality">Quality</option>
+                <option value="cost" selected>Cost</option>
+                <option value="delivery">Delivery</option>
+                <option value="service">Service</option>
+              <% } else if (datasets.concern==="delivery") {%>
+                <option value="quality">Quality</option>
+                <option value="cost">Cost</option>
+                <option value="delivery" selected>Delivery</option>
+                <option value="service">Service</option>
+              <% } else if(datasets.concern==="service") {%>
+                <option value="quality">Quality</option>
+                <option value="cost">Cost</option>
+                <option value="delivery">Delivery</option>
+                <option value="service" selected>Service</option>
+              <% } %>
+            </select>
           </div>
           <div class="mb-6">
             <label
