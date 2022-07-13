@@ -10,7 +10,183 @@
           </h2>
         </div>
       </div>
-      <div class="max-w-full mb-8 mx-auto">  
+      <div class="max-w-full mb-8 mx-auto">
+        
+        <div class="mb-5">
+          <form action="/datasets" method="get">
+            <label for="table-search" class="sr-only">Search</label>
+            <div class="relative mt-1">
+              <div class="flex">
+                <div class="mx-2">
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                        clip-rule="evenodd"></path>
+                    </svg>
+                  </div>
+                  <input type="text" id="table-search"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-70 pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Cari Nama" name="keyword" />
+                </div>
+                <!-- <div class="mx-2 w-full">
+                  <select id="program" name="program"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected="" value="">Pilih Program...</option>
+                    <option value="ssm">Setifikasi Social Media</option>
+                    <option value="sdm">
+                      Sertifikasi Digital Marketing
+                    </option>
+                    <option value="subsidism">
+                      Subsidi Social Media
+                    </option>
+                    <option value="subsididm">
+                      Subsidi Digital Marketing
+                    </option>
+                  </select>
+                </div> -->
+                <div class="mx-2 w-full">
+                  <select
+              id="program"
+              name="program"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option value="">Program</option>
+              <option value="ssm">Sertifikasi Social Media</option>
+              <option value="sdm">Sertifikasi Digital Marketing</option>
+              <option value="subsidism">Subsidi Social Media</option>
+              <option value="subsididm">Subsidi Digital Marketing</option>
+              <option value="inhouse">In House Training</option>
+              <option value="tiktok">Optimasi TikTok untuk Bisnis</option>
+              <option value="seo">SEO Specialist</option>
+              <option value="dmm">Digital Marketing Manager</option>
+              <option value="paidcampaign">Paid Campaign Strategy</option>
+              <option value="salesintech">Sales In Tech</option>
+              <option value="decpractitioner">Digital Entrepreneur Class Practitioner</option>
+              <option value="decprofessional">Digital Entrepreneur Class Professional</option>
+              <option value="hrm">Human Resource Manager</option>
+            </select>
+            </div>
+                <div class="mx-2 w-full">
+                  <select
+                  id="batch"
+                  name="batch"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                >
+                <option value="">Pilih Batch</option>
+                <% for ( let i = 1; i <= 100; i++ ) { %>
+                <option value="<%=[ i ] %>"><%=[i]%></option>
+                <%}%> 
+                </select>
+                </div>
+                <div class="mx-2 w-full">
+                  <select id="status" name="status"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected="" value="">Pilih Status</option>
+                    <option value="closing">Closing</option>
+                    <option value="schedule">
+                      Schedule
+                    </option>
+                    <option value="refollow up">
+                      Refollow Up
+                    </option>
+                    <option value="program">
+                      Program
+                    </option>
+                    <option value="rapoo">
+                      Rapoo
+                    </option>
+                    <option value="price">
+                      Price
+                    </option>
+                  </select>
+                </div>
+                <div class="mx-2 w-full">
+                  <select id="concern" name="concern"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected="" value="">Pilih Concern</option>
+                    <option value="quality">Quality</option>
+                    <option value="cost">
+                      Cost
+                    </option>
+                    <option value="delivery">
+                      Delivery
+                    </option>
+                    <option value="service">
+                      Service
+                    </option>
+                  </select>
+                </div>
+                <div class="mx-2 w-full">
+                  <select id="sumber" name="sumber"
+                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected="" value="">Pilih Sumber</option>
+                    <option value="kontak">Kontak</option>
+                    <option value="whatsapp">
+                      Whatsapp
+                    </option>
+                    <option value="wordpress">
+                      Wordpress
+                    </option>
+                  </select>
+                </div>
+                
+                <div>
+                  <button type="submit"
+                    class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                  </button>
+                </div>
+                
+  
+                <!-- <div>
+                  <a href="/datasets/new" type="submit"
+                    class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-width="2" stroke-linejoin="round"
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                  </a>
+                </div> -->
+                
+              </div>
+              
+            </div>
+            <div class="pt-5">
+              <div class="mx-2 w-full">
+                  
+                <div class="relative">
+                  <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                  </div>
+                  <input datepicker datepicker-format="dd/mm/yyyy" datepicker-autohide type="text" name="tglInput" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pilih Tanggal Input" autocomplete="off">
+                </div>
+                
+                                </div>
+            </div>
+          </form>
+          <div class="">
+            <div class="pt-5">
+              
+              <% if (currentUser.role == "admin") {%> 
+              <div class="mt-1">
+                <form action="/datasets/export" method="post">
+                <button type="submit"
+        class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        Export to Excel
+      </button>
+    </form>
+              </div>
+              <% } %> 
+            </div>
+          </div>
+        </div>
         <!-- Table -->
         <!-- <div class="max-w-lg mb-10">
           <label class="block mb-2 text-sm font-medium text-slate-800" for="file_input">Upload CSV File</label>
@@ -27,150 +203,10 @@
           </form>
         </div> -->
         <div class="relative w-full overflow-x-auto shadow-md sm:rounded-lg mb-10 bg-slate-200">
-          <div class="flex">
-            <div class="p-4 mx-auto">
-              <form action="/datasets" method="get">
-                <label for="table-search" class="sr-only">Search</label>
-                <div class="relative mt-1">
-                  <div class="flex">
-                    <div class="mx-2">
-                      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd"
-                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                            clip-rule="evenodd"></path>
-                        </svg>
-                      </div>
-                      <input type="text" id="table-search"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Cari Nama" name="keyword" />
-                    </div>
-                    <!-- <div class="mx-2 w-full">
-                      <select id="program" name="program"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected="" value="">Pilih Program...</option>
-                        <option value="ssm">Setifikasi Social Media</option>
-                        <option value="sdm">
-                          Sertifikasi Digital Marketing
-                        </option>
-                        <option value="subsidism">
-                          Subsidi Social Media
-                        </option>
-                        <option value="subsididm">
-                          Subsidi Digital Marketing
-                        </option>
-                      </select>
-                    </div> -->
-                    <div class="mx-2 w-full">
-                      <input
-                      type="text"
-                      id="program"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Program...."
-                      name="program"
-                    />
-                    </div>
-                    <div class="mx-2 w-full">
-                    <input
-                      type="text"
-                      id="batch"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                      placeholder="Batch"
-                      name="batch"
-                    />
-                    </div>
-                    <div class="mx-2 w-full">
-                      <select id="status" name="status"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected="" value="">Pilih Status</option>
-                        <option value="closing">Closing</option>
-                        <option value="schedule">
-                          Schedule
-                        </option>
-                        <option value="refollow up">
-                          Refollow Up
-                        </option>
-                        <option value="program">
-                          Program
-                        </option>
-                        <option value="rapot">
-                          Rapot
-                        </option>
-                      </select>
-                    </div>
-                    <div class="mx-2 w-full">
-                      <select id="concern" name="concern"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected="" value="">Pilih Concern</option>
-                        <option value="quality">Quality</option>
-                        <option value="cost">
-                          Cost
-                        </option>
-                        <option value="delivery">
-                          Delivery
-                        </option>
-                        <option value="service">
-                          Service
-                        </option>
-                      </select>
-                    </div>
-                    <div class="mx-2 w-full">
-                      <select id="sumber" name="sumber"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                        <option selected="" value="">Pilih Sumber</option>
-                        <option value="kontak">Kontak</option>
-                        <option value="whatsapp">
-                          Whatsapp
-                        </option>
-                        <option value="wordpress">
-                          Wordpress
-                        </option>
-                      </select>
-                    </div>
-                    <div>
-                      <button type="submit"
-                        class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                      </button>
-                    </div>
-
-
-                    <!-- <div>
-                      <a href="/datasets/new" type="submit"
-                        class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path stroke-linecap="round" stroke-width="2" stroke-linejoin="round"
-                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                        </svg>
-                      </a>
-                    </div> -->
-                    
-                  </div>
-                  
-                </div>
-              </form>
-              <% if (currentUser.role == "admin") {%> 
-              <div class="mt-1">
-                <form action="/datasets/export" method="post">
-                <button type="submit"
-        class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        Export to Excel
-      </button>
-    </form>
-              </div>
-              <% } %> 
-            </div>
-          </div>
           <table class="w-full table-auto text-sm text-left text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-                <th scope="col" class="px-6 py-3">No.</th>
+                <th scope="col" class="px-6 py-3">Tanggal Input</th>
                 <th scope="col" class="px-6 py-3">
                   Nama
                   <!-- <div class="flex">
@@ -199,7 +235,7 @@
                 <th scope="col" class="px-6 py-3">Atur Jadwal</th>
                 <th scope="col" class="px-6 py-3">Concern</th>
                 <th scope="col" class="px-6 py-3">Sumber</th>
-                <th scope="col" class="px-6 py-3">Tanggal Input</th>
+
                 <% if (currentUser && currentUser.role == "admin") {%> 
                 <th scope="col" class="px-6 py-3">
                   <span class="sr-only">Edit</span>
@@ -217,7 +253,7 @@
                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     
                     <td class="px-6 py-4">
-                      <%= i + 1 %>
+                      <%= datasets[i].tglInput %>
                     </td>
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                       <%= datasets[i].nama %>
@@ -231,15 +267,97 @@
                     <td class="px-6 py-4">
                       <%= datasets[i].perusahaan %>
                     </td>
-                    <td class="px-6 py-4">
-                      <%= datasets[i].program %>
-                    </td>
+
+
+
+                    <% if (datasets[i].program === "ssm") {%>
+                      <td class="px-6 py-4">
+                        Sertifikasi Social Media
+                      </td>
+                    <% } else if (datasets[i].program === "sdm") {%> 
+                      <td class="px-6 py-4">
+                        Sertifikasi Digital Marketing
+                      </td>
+                    <% } else if (datasets[i].program === "subsidism") {%>   
+                      <td class="px-6 py-4">
+                        Subsidi Social Media
+                      </td>
+                    <% } else if (datasets[i].program === "subsidism") {%>  
+                      <td class="px-6 py-4">
+                        Subsidi Digital Marketing
+                      </td>
+                    <% } else if (datasets[i].program === "inhouse") {%>
+                      <td class="px-6 py-4">
+                        In House Training
+                      </td>
+                    <% } else if (datasets[i].program === "tiktok") {%>
+                      <td class="px-6 py-4">
+                        Optimasi TikTok Untuk Bisnis
+                      </td>
+                    <% } else if (datasets[i].program === "seo") {%> 
+                      <td class="px-6 py-4">
+                        SEO Specialist
+                      </td>
+                    <% } else if (datasets[i].program === "dmm") {%>
+                      <td class="px-6 py-4">
+                        Digital Makrketing Manager
+                      </td>
+                    <% } else if (datasets[i].program === "paidcampaign") {%>
+                      <td class="px-6 py-4">
+                        Paid Campaign Strategy
+                      </td>
+                    <% } else if (datasets[i].program === "salesintech") {%>  
+                      <td class="px-6 py-4">
+                        Sales In Tech
+                      </td>
+                    <% } else if (datasets[i].program === "decpractitioner") {%>
+                      <td class="px-6 py-4">
+                        Digital Entrepreneur Class Practitioner
+                      </td>
+                    <% } else if (datasets[i].program === "decprofessional") {%>
+                      <td class="px-6 py-4">
+                        Digital Entrepreneur Class Professional
+                      </td>
+                    <% } else if (datasets[i].program === "hrm") {%>
+                      <td class="px-6 py-4">
+                        Human Resource Manager
+                      </td>
+                    <% } %>             
+
+
+
                     <td class="px-6 py-4">
                       <%= datasets[i].batch %>
                     </td>
+
+
+                    <% if (datasets[i].status === "closing") {%> 
                     <td class="px-6 py-4">
-                      <%= datasets[i].status %>
+                      Closing
                     </td>
+                    <% } else if (datasets[i].status === "rapoo") {%> 
+                    <td class="px-6 py-4">
+                      Rapoo
+                    </td>
+                    <% } else if (datasets[i].status === "schedule") {%>
+                    <td class="px-6 py-4">
+                      Schedule
+                    </td>
+                    <% } else if (datasets[i].status === "refollow up") {%>
+                    <td class="px-6 py-4">
+                      Re-Follow Up
+                    </td>
+                    <% } else if (datasets[i].status === "program") {%>
+                      <td class="px-6 py-4">
+                        Program
+                      </td>
+                    <% } else if (datasets[i].status === "price") {%>
+                      <td class="px-6 py-4">
+                        Price
+                      </td>
+                      <% }%>
+                      
+
                     <% if (datasets[i].status == "refollow up") {%>
                       <% if(!datasets[i].tglRefollowUp) {%> 
                     <td class="px-6 py-4">
@@ -247,26 +365,47 @@
                     </td>
                     <% } else { %>
                         <td>
-                          <%= datasets[i].tglRefollowUp.getDate() %>/
-                          <%= datasets[i].tglRefollowUp.getMonth() + 1 %>/
-                          <%= datasets[i].tglRefollowUp.getFullYear() %>
+                          <%= datasets[i].tglRefollowUp %>
                           <a href="/datasets/<%= datasets[i]._id %>/aturJadwal" class="text-sky-500">Edit</a>
                         </td>
                       <% } %> 
                     <% } else {%>
                       <td></td>
-                      <% } %>   
+                      <% } %> 
+                      
+                      
+                    <% if (datasets[i].concern === "quality") {%> 
                     <td class="px-6 py-4">
-                      <%= datasets[i].concern %>
+                      Quality
                     </td>
+                    <% } else if (datasets[i].concern  === "cost") {%>
                     <td class="px-6 py-4">
-                      <%= datasets[i].sumber %>
+                      Cost
                     </td>
+                    <% } else if (datasets[i].concern === "delivery") {%>
                     <td class="px-6 py-4">
-                      <%= datasets[i].tglInput.getDate() %>/
-                      <%= datasets[i].tglInput.getMonth() +1 %>/
-                      <%= datasets[i].tglInput.getFullYear() %>
+                      Delivery
                     </td>
+                    <% } else if (datasets[i].concern === "service") {%>
+                    <td class="px-6 py-4">
+                      Service
+                    </td>
+                    <% } %>
+
+
+                    <% if (datasets[i].sumber === "whatsapp") {%> 
+                    <td class="px-6 py-4">
+                      WhatsApp
+                    </td>
+                    <% } else if (datasets[i].sumber === "wordpress") {%> 
+                    <td class="px-6 py-4">
+                      Wordpress
+                    </td>
+                    <% } else if (datasets[i].sumber === "kontak") {%> 
+                      <td class="px-6 py-4">
+                        Kontak
+                      </td>
+                      <% }%> 
                     <% if (currentUser && currentUser.role == "admin") {%> 
                     <td class="px-6 py-4 text-right">
                       <a href="/datasets/<%= datasets[i]._id %>"

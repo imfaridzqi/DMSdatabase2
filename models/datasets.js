@@ -50,7 +50,7 @@ const datasetsSchema = new Schema(
       type: String,
     },
     tglInput: {
-      type: Date,
+      type: String,
     },
     sumber: {
       type: String,
@@ -63,7 +63,7 @@ const datasetsSchema = new Schema(
       enum: ["quality", "cost", "delivery", "service"]
     },
     tglRefollowUp: {
-      type: Date,
+      type: String,
     },
   },
 );

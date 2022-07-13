@@ -17,9 +17,9 @@ window.onload = function () {
 
   const flashAlert = document.querySelector(".flash-alert");
 
-  const showModal = document.querySelector("#showModal");
-  const uploadModal = document.querySelector("#uploadModal");
-  const closeModal = document.querySelector("#closeModal");
+  const showModal = document.getElementById("showModal");
+  const uploadModal = document.getElementById("uploadModal");
+  const closeModal = document.getElementById("closeModal");
   const batal = document.querySelector("#batal");
 
   // var pilihTanggal = document.querySelector("#pilih-tanggal");

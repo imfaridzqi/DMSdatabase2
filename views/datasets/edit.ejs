@@ -82,14 +82,28 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >Program</label
             >
-            <input
-              type="text"
+            <select
               id="program"
               name="datasets[program]"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              required="true"
-              value="<%= datasets.program %>"
-            />
+            >
+            
+            <option value="ssm" <%= datasets.program == "ssm" ? "selected" : "" %>>Sertifikasi Sosial Media</option>
+            <option value="sdm" <%= datasets.program == "sdm" ? "selected" : "" %>>Sertifikasi Digital Marketing</option>
+            <option value="subsidism" <%= datasets.program == "subsidism" ? "selected" : "" %>>Subsidi Sosial Media</option>
+            <option value="subsididm" <%= datasets.program == "subsidism" ? "selected" : "" %>>Subsidi Digital Marketing</option>
+            <option value="inhouse" <%= datasets.program == "inhouse" ? "selected" : "" %>>In House Training</option>
+            <option value="tiktok" <%= datasets.program == "tiktok" ? "selected" : "" %>>Optimasi TikTok Untuk Bisnis</option>
+            <option value="seo" <%= datasets.program == "seo" ? "selected" : "" %>>SEO Specialist</option>
+            <option value="dmm" <%= datasets.program == "dmm" ? "selected" : "" %>>Digital Marketing Manager</option>
+            <option value="paidcampaign" <%= datasets.program == "paidcampaign" ? "selected" : "" %>>Paid Campaign Strategy</option>
+            <option value="salesintech" <%= datasets.program == "salesintech" ? "selected" : "" %>>Sales In Tech</option>
+            <option value="decpractitioner" <%= datasets.program == "decpractitioner" ? "selected" : "" %>>Digital Entrepreneur Practitioner</option>
+            <option value="decprofessional" <%= datasets.program == "decprofessional" ? "selected" : "" %>>Digital Entrepreneur Professional</option>
+            <option value="hrm" <%= datasets.program == "hrm" ? "selected" : "" %>>Human Resource Manager</option>
+              
+          </select>
+ 
           </div>
           <div class="mb-6">
             <label
@@ -97,13 +111,20 @@
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
               >Batch Program</label
             >
-            <input
-              type="text"
+            <select
               id="batch"
               name="datasets[batch]"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              value="<%= datasets.batch %>"
-            />
+            >
+            <%
+            for ( let i = 1; i <= 100; i++ )
+            {
+                let selected = ( datasets.batch == i ) ? "selected" : "";
+                %><option value="<%=[i] %>" <%=selected %>><%=i %></option><%
+            }
+            %>
+
+            </select>
           </div>
           <div class="mb-6">
             <label
@@ -116,49 +137,14 @@
               name="datasets[status]"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <% if (datasets.status==="closing") {%>
-              <option value="closing" selected>Closing</option>
-              <option value="rapoo">Rapoo</option>
-              <option value="schedule">Schedule</option>
-              <option value="refollow up">Refollow Up</option>
-              <option value="program">Program</option>
-              <option value="price">Price</option>
-              <% } else if(datasets.status==="rapoo") {%>
-              <option value="closing">Closing</option>
-              <option value="rapoo" selected>Rapoo</option>
-              <option value="schedule">Schedule</option>
-              <option value="refollow up">Refollow Up</option>
-              <option value="program">Program</option>
-              <option value="price">Price</option>
-              <% } else if (datasets.status==="schedule") {%>
-              <option value="closing">Closing</option>
-              <option value="rapoo">Rapoo</option>
-              <option value="schedule" selected>Schedule</option>
-              <option value="refollow up">Refollow Up</option>
-              <option value="program">Program</option>
-              <option value="price">Price</option>
-              <% } else if(datasets.status==="refollow up") {%>
-              <option value="closing">Closing</option>
-              <option value="rapoo">Rapoo</option>
-              <option value="schedule">Schedule</option>
-              <option value="refollow up" selected>Refollow Up</option>
-              <option value="program">Program</option>
-              <option value="price">Price</option>
-              <% } else if (datasets.status==="program") {%>
-              <option value="closing">Closing</option>
-              <option value="rapoo">Rapoo</option>
-              <option value="schedule">Schedule</option>
-              <option value="refollow up">Refollow Up</option>
-              <option value="program" selected>Program</option>
-              <option value="price">Price</option>
-              <% } else if (datasets.status==="price") {%>
-                <option value="closing">Closing</option>
-                <option value="rapoo">Rapoo</option>
-                <option value="schedule">Schedule</option>
-                <option value="refollow up">Refollow Up</option>
-                <option value="program" >Program</option>
-                <option value="price" selected>Price</option>
-              <% } %>
+              <%
+                const status = [ "closing", "rapoo", "schedule", "refollow up", "program", "price" ];
+                for ( let i = 0; i < status.length; i++ )
+                {
+                    let selected = ( datasets.status == status[i] ) ? "selected" : "";
+                    %><option value="<%=status[ i ] %>" <%=selected %>><%=status[i] %></option><%
+                }
+                %> 
             </select>
           </div>
 
@@ -173,27 +159,14 @@
               name="datasets[concern]"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <% if (datasets.concern==="quality") {%>
-              <option value="quality" selected>Quality</option>
-              <option value="cost">Cost</option>
-              <option value="delivery">Delivery</option>
-              <option value="service">Service</option>
-              <% } else if(datasets.concern==="cost") {%>
-                <option value="quality">Quality</option>
-                <option value="cost" selected>Cost</option>
-                <option value="delivery">Delivery</option>
-                <option value="service">Service</option>
-              <% } else if (datasets.concern==="delivery") {%>
-                <option value="quality">Quality</option>
-                <option value="cost">Cost</option>
-                <option value="delivery" selected>Delivery</option>
-                <option value="service">Service</option>
-              <% } else if(datasets.concern==="service") {%>
-                <option value="quality">Quality</option>
-                <option value="cost">Cost</option>
-                <option value="delivery">Delivery</option>
-                <option value="service" selected>Service</option>
-              <% } %>
+              <%
+                const concern = [ "quality", "cost", "delivery", "service"];
+                for ( let i = 0; i < concern.length; i++ )
+                {
+                    let selected = ( datasets.concern == concern[i] ) ? "selected" : "";
+                    %><option value="<%=concern[ i ] %>" <%=selected %>><%=concern[i] %></option><%
+                }
+                %> 
             </select>
           </div>
           <div class="mb-6">
@@ -207,20 +180,28 @@
               name="datasets[sumber]"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
-              <% if (datasets.sumber==="kontak") {%>
-              <option value="kontak" selected>Kontak</option>
-              <option value="whatsapp">WhatsApp</option>
-              <option value="wordpress">Wordpress</option>
-              <% } else if(datasets.sumber==="whatsapp") {%>
-              <option value="kontak">Kontak</option>
-              <option value="whatsapp" selected>WhatsApp</option>
-              <option value="wordpress">Wordpress</option>
-              <% } else if (datasets.sumber==="wordpress") {%>
-              <option value="kontak">Kontak</option>
-              <option value="whatsapp">WhatsApp</option>
-              <option value="wordpress" selected>Wordpress</option>
-              <% } %>
+              <%
+                const sumber = [ "kontak", "whatsapp", "wordpress"];
+                for ( let i = 0; i < sumber.length; i++ )
+                {
+                    let selected = ( datasets.sumber == sumber[i] ) ? "selected" : "";
+                    %><option value="<%=sumber[ i ] %>" <%=selected %>><%=sumber[i] %></option><%
+                }
+                %> 
             </select>
+          </div>
+          <div class="mb-6">
+            <label
+              for="tanggal"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400"
+              >Tanggal Input</label
+            >
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+              </div>
+              <input datepicker datepicker-format="dd/mm/yyyy" datepicker-autohide type="text" name="datasets[tglInput]" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pilih Tanggal Input" value="<%= datasets.tglInput %>" autocomplete="off">
+            </div>
           </div>
           <button
             type="submit"

@@ -2,6 +2,7 @@ const Datasets = require("../models/datasets");
 const csv = require("csvtojson");
 const ExpressError = require("../utils/ExpressError");
 const xlsx = require("xlsx");
+const moment = require("moment");
 
 module.exports.index = async (req, res) => {
   let query = [
@@ -71,6 +72,20 @@ module.exports.index = async (req, res) => {
       }
     })
   }
+  if (req.query.tglInput) {
+    query.push({
+      $match: {
+        tglInput: req.query.tglInput
+      }
+    })
+  }
+  if(req.query.end) {
+    query.push({
+      $match: {
+        end: req.query.end
+      }
+    })
+  }
   let q = req.query;
   let total = await Datasets.countDocuments(query);
   let page = req.query.page ? parseInt(req.query.page) : 1;
@@ -105,7 +120,7 @@ module.exports.index = async (req, res) => {
     });
   }
 
-  let datasets = await Datasets.aggregate(query).sort({ createdAt: -1 });
+  let datasets = await Datasets.aggregate(query).sort({ tglInput: -1 });
   let totalPages = Math.ceil(total / perPage);
 
   res.render('datasets/', {
@@ -178,11 +193,10 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.create = async (req, res) => {
   if (!req.body.datasets) throw new ExpressError("Invalid Data", 400);
-  const datasets = new Datasets({ ...req.body.datasets });
-  let time = Date.parse({...req.body.datasets}.tglInput)
-  let now = new Date(time);
-  let tglInput = now.toLocaleDateString("id-ID")
-  const newDatasets = await datasets.save();
+  const tglInput = moment(req.body.tglInput).format("DD/MM/YYYY");
+  const datasets = new Datasets({ ...req.body.datasets, tglInput });
+
+  await datasets.save();
   req.flash("success", "Data berhasil ditambah");
   res.redirect("/datasets");
 };
@@ -250,7 +264,7 @@ module.exports.renderEditForm = async (req, res) => {
 module.exports.edit = async (req, res) => {
   const { id } = req.params;
   const datasets = await Datasets.findByIdAndUpdate(id, {
-    ...req.body.datasets,
+    ...req.body.datasets
   });
   const body = { ...req.body.datasets };
   if (body.status != "refollow up") {
@@ -276,9 +290,9 @@ module.exports.renderAturJadwalForm = async (req, res) => {
 
 module.exports.aturJadwal = async (req, res) => {
   const { id } = req.params;
-  const datasets = await Datasets.findByIdAndUpdate(id, {
-    ...req.body.datasets,
-  });
+  const tglRefollowUp = moment(req.body.tglRefollowUp).format("DD/MM/YYYY");
+  console.log(tglRefollowUp)
+  const datasets = await Datasets.findByIdAndUpdate(id, {tglRefollowUp});
   datasets.save();
   req.flash("success", "Jadwal Re-Follow Up telah diatur");
   res.redirect("/datasets");

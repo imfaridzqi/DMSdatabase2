@@ -47,6 +47,6 @@ router.get(
   catchAsync(datasets.renderAturJadwalForm)
 );
 
-router.put("/:id", isLoggedIn, catchAsync(datasets.aturJadwal));
+router.put("/:id/aturJadwal", isLoggedIn, catchAsync(datasets.aturJadwal));
 
 module.exports = router;
