@@ -72,20 +72,6 @@ module.exports.index = async (req, res) => {
       }
     })
   }
-  if (req.query.tglInput) {
-    query.push({
-      $match: {
-        tglInput: req.query.tglInput
-      }
-    })
-  }
-  if(req.query.end) {
-    query.push({
-      $match: {
-        end: req.query.end
-      }
-    })
-  }
   let q = req.query;
   let total = await Datasets.countDocuments(query);
   let page = req.query.page ? parseInt(req.query.page) : 1;
@@ -193,7 +179,7 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.create = async (req, res) => {
   if (!req.body.datasets) throw new ExpressError("Invalid Data", 400);
-  const tglInput = moment(req.body.tglInput).format("DD/MM/YYYY");
+  const tglInput = req.body.tglInput;
   const datasets = new Datasets({ ...req.body.datasets, tglInput });
 
   await datasets.save();
@@ -290,8 +276,9 @@ module.exports.renderAturJadwalForm = async (req, res) => {
 
 module.exports.aturJadwal = async (req, res) => {
   const { id } = req.params;
-  const tglRefollowUp = moment(req.body.tglRefollowUp).format("DD/MM/YYYY");
-  console.log(tglRefollowUp)
+  const tglRefollowUp = req.body.tglRefollowUp;
+  // console.log(req.body.tglRefollowUp)
+  // console.log(tglRefollowUp)
   const datasets = await Datasets.findByIdAndUpdate(id, {tglRefollowUp});
   datasets.save();
   req.flash("success", "Jadwal Re-Follow Up telah diatur");

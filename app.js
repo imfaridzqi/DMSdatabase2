@@ -25,9 +25,9 @@ const Datasets = require("./models/datasets");
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// process.env.DB_URL || 
 
-
-const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/DMSDatabase";
+const dbUrl = "mongodb://localhost:27017/DMSDatabase";
 
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
