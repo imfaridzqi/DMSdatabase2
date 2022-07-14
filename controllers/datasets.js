@@ -106,7 +106,7 @@ module.exports.index = async (req, res) => {
     });
   }
 
-  let datasets = await Datasets.aggregate(query).sort({ tglInput: -1 });
+  let datasets = await Datasets.aggregate(query).sort({ createdAt: -1 });
   let totalPages = Math.ceil(total / perPage);
 
   res.render('datasets/', {
