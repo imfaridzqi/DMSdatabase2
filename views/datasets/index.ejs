@@ -53,19 +53,9 @@
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               <option value="">Program</option>
-              <option value="ssm">Sertifikasi Social Media</option>
-              <option value="sdm">Sertifikasi Digital Marketing</option>
-              <option value="subsidism">Subsidi Social Media</option>
-              <option value="subsididm">Subsidi Digital Marketing</option>
-              <option value="inhouse">In House Training</option>
-              <option value="tiktok">Optimasi TikTok untuk Bisnis</option>
-              <option value="seo">SEO Specialist</option>
-              <option value="dmm">Digital Marketing Manager</option>
-              <option value="paidcampaign">Paid Campaign Strategy</option>
-              <option value="salesintech">Sales In Tech</option>
-              <option value="decpractitioner">Digital Entrepreneur Class Practitioner</option>
-              <option value="decprofessional">Digital Entrepreneur Class Professional</option>
-              <option value="hrm">Human Resource Manager</option>
+              <% for (prog of program) {%>
+                <option value="<%= prog.nama %>"><%= prog.nama %></option>
+              <% } %>  
             </select>
             </div>
                 <div class="mx-2 w-full">
@@ -159,8 +149,25 @@
               
             </div>
             <div class="pt-5 flex">
+              
+<!-- <div date-rangepicker="" datepicker-format="dd/mm/yyyy" class="flex items-center">
+  <div class="relative">
+    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+    </div>
+    <input name="tglInput" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 datepicker-input" placeholder="Select date start">
+  </div>
+  <span class="mx-4 text-gray-500">to</span>
+  <div class="relative">
+    <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+    </div>
+    <input name="end" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 datepicker-input" placeholder="Select date end">
+</div>
+</div> -->
+
               <div class="mx-2 w-48">
-                  
+                
                 <div class="relative">
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
@@ -168,7 +175,7 @@
                   <input datepicker datepicker-format="dd/mm/yyyy" datepicker-autohide type="text" name="tglInput" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Pilih Tanggal Input" autocomplete="off">
                 </div>
                 </div>
-                <div>
+                <!-- <div>
                   <button type="submit"
                     class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -177,7 +184,7 @@
                         d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                     </svg>
                   </button>
-                </div>
+                </div> -->
             </div>
           </form>
           <div class="">
@@ -277,63 +284,7 @@
                       <%= datasets[i].perusahaan %>
                     </td>
 
-
-
-                    <% if (datasets[i].program === "ssm") {%>
-                      <td class="px-6 py-4">
-                        Sertifikasi Social Media
-                      </td>
-                    <% } else if (datasets[i].program === "sdm") {%> 
-                      <td class="px-6 py-4">
-                        Sertifikasi Digital Marketing
-                      </td>
-                    <% } else if (datasets[i].program === "subsidism") {%>   
-                      <td class="px-6 py-4">
-                        Subsidi Social Media
-                      </td>
-                    <% } else if (datasets[i].program === "subsididm") {%>  
-                      <td class="px-6 py-4">
-                        Subsidi Digital Marketing
-                      </td>
-                    <% } else if (datasets[i].program === "inhouse") {%>
-                      <td class="px-6 py-4">
-                        In House Training
-                      </td>
-                    <% } else if (datasets[i].program === "tiktok") {%>
-                      <td class="px-6 py-4">
-                        Optimasi TikTok Untuk Bisnis
-                      </td>
-                    <% } else if (datasets[i].program === "seo") {%> 
-                      <td class="px-6 py-4">
-                        SEO Specialist
-                      </td>
-                    <% } else if (datasets[i].program === "dmm") {%>
-                      <td class="px-6 py-4">
-                        Digital Makrketing Manager
-                      </td>
-                    <% } else if (datasets[i].program === "paidcampaign") {%>
-                      <td class="px-6 py-4">
-                        Paid Campaign Strategy
-                      </td>
-                    <% } else if (datasets[i].program === "salesintech") {%>  
-                      <td class="px-6 py-4">
-                        Sales In Tech
-                      </td>
-                    <% } else if (datasets[i].program === "decpractitioner") {%>
-                      <td class="px-6 py-4">
-                        Digital Entrepreneur Class Practitioner
-                      </td>
-                    <% } else if (datasets[i].program === "decprofessional") {%>
-                      <td class="px-6 py-4">
-                        Digital Entrepreneur Class Professional
-                      </td>
-                    <% } else if (datasets[i].program === "hrm") {%>
-                      <td class="px-6 py-4">
-                        Human Resource Manager
-                      </td>
-                    <% } %>             
-
-
+                    <td><%= datasets[i].program %></td>
 
                     <td class="px-6 py-4">
                       <%= datasets[i].batch %>

@@ -20,14 +20,15 @@ const { isLoggedIn } = require("./middleware");
 
 const userRoutes = require("./routes/user");
 const datasetsRoutes = require("./routes/datasets");
+const programRoutes = require("./routes/program");
 const Datasets = require("./models/datasets");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// process.env.DB_URL ||  
 
-
-const dbUrl = process.env.DB_URL ||  "mongodb://localhost:27017/DMSDatabase";
+const dbUrl = "mongodb://localhost:27017/DMSDatabase";
 
 mongoose.connect(dbUrl, {
   useNewUrlParser: true,
@@ -55,6 +56,8 @@ app.use(
   session({
     secret: secret,
     store: MongoStore.create({ mongoUrl: dbUrl }),
+    resave: true,
+    saveUninitialized: true
   })
 );
 
@@ -88,6 +91,7 @@ app.use((req, res, next) => {
 
 app.use("/user", userRoutes);
 app.use("/datasets", datasetsRoutes);
+app.use("/program", programRoutes);
 
 // app.get("/deleteall", async (req, res) => {
 //   await Datasets.deleteMany();

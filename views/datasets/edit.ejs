@@ -87,20 +87,10 @@
               name="datasets[program]"
               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
+              <% for (prog of program) {%> 
+            <option value="<%= prog.nama %>"><%= prog.nama %></option>
+            <% } %> 
             
-            <option value="ssm" <%= datasets.program == "ssm" ? "selected" : "" %>>Sertifikasi Sosial Media</option>
-            <option value="sdm" <%= datasets.program == "sdm" ? "selected" : "" %>>Sertifikasi Digital Marketing</option>
-            <option value="subsidism" <%= datasets.program == "subsidism" ? "selected" : "" %>>Subsidi Sosial Media</option>
-            <option value="subsididm" <%= datasets.program == "subsidism" ? "selected" : "" %>>Subsidi Digital Marketing</option>
-            <option value="inhouse" <%= datasets.program == "inhouse" ? "selected" : "" %>>In House Training</option>
-            <option value="tiktok" <%= datasets.program == "tiktok" ? "selected" : "" %>>Optimasi TikTok Untuk Bisnis</option>
-            <option value="seo" <%= datasets.program == "seo" ? "selected" : "" %>>SEO Specialist</option>
-            <option value="dmm" <%= datasets.program == "dmm" ? "selected" : "" %>>Digital Marketing Manager</option>
-            <option value="paidcampaign" <%= datasets.program == "paidcampaign" ? "selected" : "" %>>Paid Campaign Strategy</option>
-            <option value="salesintech" <%= datasets.program == "salesintech" ? "selected" : "" %>>Sales In Tech</option>
-            <option value="decpractitioner" <%= datasets.program == "decpractitioner" ? "selected" : "" %>>Digital Entrepreneur Practitioner</option>
-            <option value="decprofessional" <%= datasets.program == "decprofessional" ? "selected" : "" %>>Digital Entrepreneur Professional</option>
-            <option value="hrm" <%= datasets.program == "hrm" ? "selected" : "" %>>Human Resource Manager</option>
               
           </select>
  

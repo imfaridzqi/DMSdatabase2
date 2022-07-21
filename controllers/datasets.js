@@ -2,6 +2,7 @@ const Datasets = require("../models/datasets");
 const csv = require("csvtojson");
 const ExpressError = require("../utils/ExpressError");
 const xlsx = require("xlsx");
+const Program = require("../models/program")
 const moment = require("moment");
 
 module.exports.index = async (req, res) => {
@@ -68,10 +69,17 @@ module.exports.index = async (req, res) => {
   if (req.query.tglInput) {
     query.push({
       $match: {
-        tglInput: req.query.tglInput,
+        tglInput:req.query.tglInput,
       }
     })
   }
+  // if (req.query.end) {
+  //   query.push({
+  //     $match: {
+  //       end: {$lte: new Date(req.query.end)},
+  //     }
+  //   })
+  // }
   let q = req.query;
   let total = await Datasets.countDocuments(query);
   let page = req.query.page ? parseInt(req.query.page) : 1;
@@ -108,6 +116,7 @@ module.exports.index = async (req, res) => {
 
   let datasets = await Datasets.aggregate(query).sort({ createdAt: -1 });
   let totalPages = Math.ceil(total / perPage);
+  const program = await Program.find();
 
   res.render('datasets/', {
     datasets,
@@ -116,6 +125,7 @@ module.exports.index = async (req, res) => {
     total,
     totalPages,
     q,
+    program
   });
 };
 
@@ -173,8 +183,9 @@ module.exports.index = async (req, res) => {
 //   });
 // };
 
-module.exports.renderNewForm = (req, res) => {
-  res.render("datasets/new");
+module.exports.renderNewForm = async (req, res) => {
+  const program = await Program.find();
+  res.render("datasets/new", {program});
 };
 
 module.exports.create = async (req, res) => {
@@ -243,8 +254,9 @@ module.exports.exportCSV = (req, res) => {
 
 module.exports.renderEditForm = async (req, res) => {
   const { id } = req.params;
+  const program = await Program.find()
   const datasets = await Datasets.findById(id);
-  res.render("datasets/edit", { datasets });
+  res.render("datasets/edit", { datasets, program });
 };
 
 module.exports.edit = async (req, res) => {
