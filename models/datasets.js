@@ -50,7 +50,7 @@ const datasetsSchema = new Schema(
       type: String,
     },
     tglInput: {
-      type: String,
+      type: Date,
     },
     sumber: {
       type: String,

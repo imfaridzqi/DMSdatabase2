@@ -73,13 +73,22 @@ module.exports.index = async (req, res) => {
       }
     })
   }
-  // if (req.query.end) {
-  //   query.push({
-  //     $match: {
-  //       end: {$lte: new Date(req.query.end)},
-  //     }
-  //   })
-  // }
+  if (req.query.start) {
+    query.push({
+      $match: {
+        tglInput: {$gte: new Date(req.query.start)}
+      }
+    });
+  }
+  if (req.query.end) {
+    query.push({
+      $match: {
+        tglInput: {$lte: new Date(req.query.end)}
+      }
+    });
+  }
+
+
   let q = req.query;
   let total = await Datasets.countDocuments(query);
   let page = req.query.page ? parseInt(req.query.page) : 1;
@@ -114,7 +123,7 @@ module.exports.index = async (req, res) => {
     });
   }
 
-  let datasets = await Datasets.aggregate(query).sort({ createdAt: -1 });
+  let datasets = await Datasets.aggregate(query).sort({ tglInput: -1 });
   let totalPages = Math.ceil(total / perPage);
   const program = await Program.find();
 
@@ -190,7 +199,7 @@ module.exports.renderNewForm = async (req, res) => {
 
 module.exports.create = async (req, res) => {
   if (!req.body.datasets) throw new ExpressError("Invalid Data", 400);
-  const tglInput = req.body.tglInput;
+  const tglInput = new Date(req.body.tglInput);
   const datasets = new Datasets({ ...req.body.datasets, tglInput });
 
   await datasets.save();
